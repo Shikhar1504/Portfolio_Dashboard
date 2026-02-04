@@ -109,6 +109,10 @@ const Profile = () => {
                 <Label>CodeChef URL</Label>
                 <Input type="text" defaultValue={user.codechefURL} disabled />
               </div>
+              <div className="grid gap-2">
+                <Label>Resume URL</Label>
+                <Input type="text" defaultValue={user.resumeURL} disabled />
+              </div>
             </div>
           </div>
         </div>

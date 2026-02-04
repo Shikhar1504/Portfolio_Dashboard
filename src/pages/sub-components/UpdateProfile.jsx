@@ -15,7 +15,7 @@ import SpecialLoadingButton from "./SpecialLoadingButton";
 
 const UpdateProfile = () => {
   const { user, loading, error, isUpdated, message } = useSelector(
-    (state) => state.user
+    (state) => state.user,
   );
 
   const [fullName, setFullName] = useState(user && user.fullName);
@@ -23,7 +23,7 @@ const UpdateProfile = () => {
   const [phone, setPhone] = useState(user && user.phone);
   const [location, setLocation] = useState(user && user.location);
   const [skills, setSkills] = useState(
-    user && user.skills ? user.skills.join(", ") : ""
+    user && user.skills ? user.skills.join(", ") : "",
   );
 
   const [aboutMe, setAboutMe] = useState(user && user.aboutMe);
@@ -34,39 +34,42 @@ const UpdateProfile = () => {
           { title: "", description: "", icon: "User" },
           { title: "", description: "", icon: "User" },
           { title: "", description: "", icon: "User" },
-        ]
+        ],
   );
   const [portfolioURL, setPortfolioURL] = useState(user && user.portfolioURL);
   const [linkedInURL, setLinkedInURL] = useState(
-    user && (user.linkedInURL === "undefined" ? "" : user.linkedInURL)
+    user && (user.linkedInURL === "undefined" ? "" : user.linkedInURL),
   );
   const [githubURL, setGithubURL] = useState(
-    user && (user.githubURL === "undefined" ? "" : user.githubURL)
+    user && (user.githubURL === "undefined" ? "" : user.githubURL),
   );
   const [instagramURL, setInstagramURL] = useState(
-    user && (user.instagramURL === "undefined" ? "" : user.instagramURL)
+    user && (user.instagramURL === "undefined" ? "" : user.instagramURL),
   );
   const [twitterURL, setTwitterURL] = useState(
-    user && (user.twitterURL === "undefined" ? "" : user.twitterURL)
+    user && (user.twitterURL === "undefined" ? "" : user.twitterURL),
   );
   const [facebookURL, setFacebookURL] = useState(
-    user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
+    user && (user.facebookURL === "undefined" ? "" : user.facebookURL),
   );
   const [youtubeURL, setYoutubeURL] = useState(
-    user && (user.youtubeURL === "undefined" ? "" : user.youtubeURL)
+    user && (user.youtubeURL === "undefined" ? "" : user.youtubeURL),
   );
   const [leetcodeURL, setLeetcodeURL] = useState(
-    user && (user.leetcodeURL === "undefined" ? "" : user.leetcodeURL)
+    user && (user.leetcodeURL === "undefined" ? "" : user.leetcodeURL),
   );
   const [codeforcesURL, setCodeforcesURL] = useState(
-    user && (user.codeforcesURL === "undefined" ? "" : user.codeforcesURL)
+    user && (user.codeforcesURL === "undefined" ? "" : user.codeforcesURL),
   );
   const [codechefURL, setCodechefURL] = useState(
-    user && (user.codechefURL === "undefined" ? "" : user.codechefURL)
+    user && (user.codechefURL === "undefined" ? "" : user.codechefURL),
+  );
+  const [resumeURL, setResumeURL] = useState(
+    user && (user.resumeURL === "undefined" ? "" : user.resumeURL),
   );
   const [avatar, setAvatar] = useState(user && user.avatar && user.avatar.url);
   const [avatarPreview, setAvatarPreview] = useState(
-    user && user.avatar && user.avatar.url
+    user && user.avatar && user.avatar.url,
   );
 
   const [resume, setResume] = useState(null);
@@ -107,6 +110,7 @@ const UpdateProfile = () => {
     formData.append("leetcodeURL", leetcodeURL);
     formData.append("codeforcesURL", codeforcesURL);
     formData.append("codechefURL", codechefURL);
+    formData.append("resumeURL", resumeURL);
     formData.append("avatar", avatar);
     if (resume) {
       formData.append("resume", resume);
@@ -369,6 +373,15 @@ const UpdateProfile = () => {
                 className="CodeChef URL"
                 value={codechefURL}
                 onChange={(e) => setCodechefURL(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Resume URL</Label>
+              <Input
+                type="text"
+                className="Resume URL"
+                value={resumeURL}
+                onChange={(e) => setResumeURL(e.target.value)}
               />
             </div>
             {!loading ? (
